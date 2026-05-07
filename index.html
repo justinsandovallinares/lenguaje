@@ -1,3 +1,6 @@
+# Blog con comentarios guardados para todos los usuarios
+
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -11,7 +14,7 @@
       margin:0;
       padding:0;
       box-sizing:border-box;
-      font-family: 'Segoe UI', sans-serif;
+      font-family:'Segoe UI', sans-serif;
     }
 
     body{
@@ -46,42 +49,28 @@
       font-size:18px;
     }
 
-    /* BLOG */
-
-    .blog-area textarea{
-      width:100%;
-      height:220px;
-      border:none;
-      border-radius:15px;
-      padding:20px;
-      font-size:17px;
-      resize:none;
-      outline:none;
+    .blog-contenido{
       background:white;
       color:#333;
+      padding:25px;
+      border-radius:15px;
+      font-size:17px;
+      line-height:1.8;
       box-shadow:0 5px 15px rgba(0,0,0,0.2);
     }
 
-    /* IMAGENES */
-
-    .imagenes{
-      margin-top:25px;
-      display:flex;
-      gap:15px;
-      flex-wrap:wrap;
-      justify-content:center;
+    .blog-contenido h2{
+      margin-bottom:15px;
+      color:#1e3c72;
     }
 
-    .imagenes input{
-      background:white;
-      padding:10px;
-      border-radius:10px;
-      cursor:pointer;
-      color:black;
+    .blog-contenido p{
+      margin-bottom:15px;
+      text-align:justify;
     }
 
     .preview{
-      margin-top:25px;
+      margin-top:30px;
       display:flex;
       gap:20px;
       justify-content:center;
@@ -101,8 +90,6 @@
     .preview img:hover{
       transform:scale(1.05);
     }
-
-    /* COMENTARIOS */
 
     .comentarios{
       margin-top:40px;
@@ -183,37 +170,50 @@
 
   <div class="container">
 
-    <h1>✨ Mi Blog Moderno ✨</h1>
+    <h1>✨ los carros en mi vida ✨</h1>
 
     <p class="subtitulo">
-      Comparte tus ideas, imágenes y recibe comentarios.
+      Mi pasión por los carros deportivos
     </p>
 
-    <!-- BLOG -->
-    <div class="blog-area">
-      <textarea placeholder="Escribe tu blog aquí..."></textarea>
+    <div class="blog-contenido">
+
+      <p>
+       Escogí hablar de carros porque es algo que me apasiona mucho.
+
+Desde pequeño a mi me gustan mucho los carros y me encantan por las películas y caricaturas por ejemplo el rayo mcqueen y rápido y furiosos.
+
+El primer carro que me gusto fue el mitsubishi eclipse que es un carro muy icónico de rápido y furiosos 1, ese es el primer carro de la saga y me gustaba mucho por los colores y forma ya que es de color verde brillante y capa de fibra de carbono, tiene un motor de 1.5L turboalimento de 4 cilindros con inyección directa a los pistones que genera 163 caballos de fuerza aproximadamente y con 250 Niutons metros de torque.
+
+Después de el eclipse comenzó a gustarme el toyota supra MK4 de 1998 este carro era un adelantado a su época, ya que poseía una gran aerodinámica para su fecha de lanzamiento y también tiene uno de los motores mas codiciados del mundo el famoso 2JZ, ya que al ser un motor de hierro forjado es casi indestructible, alcanza la cantidad de 382 caballos de fuerza completamente stock sin ninguna modificación, ya con modificación ay carros de este tipo que an llegado a alcanzar los 3,000 caballos de fuerza, super increíble para un carro de “baja calidad” pero es una bestia sobre ruedas y por eso fue uno de mis favoritos.
+
+Este carro fue mi favorito durante mas o menos 7 años, asta que llego “el carro de mis sueños” un carro que fue temido en las carreras alemanas siendo un carro japonés, este carro fue la competencia de Toyota supra durante mucho tiempo asta que este carro lo sobrepaso por creces. Este carro domino japón en la década de los 2000’s y ya que fue, es y será una bestia con su motor RB26DETT con un bloque de 2.6L y de 6 cilindros en línea, con 24 válvulas y doble turbocompresor el famoso “Twin Turbo o TT”.
+
+Del carro de cual estoy hablando es el famoso Nissan Skyline GTR r34 de 1999 este carro es mi favorito desde ace unos 3 años y me gusta este carro porque lo manejó uno de mis actores favoritos que es Paul Walker que sale en las películas rápidos y furiosos, también este carro me gusta porque tiene una gran capacidad de tuneo y tiene una gran estética y con un White body es uno de los mejores carros del mundo para mi. Para los coleccionistas es un gran tesoro ya que es muy codiciado.
+
+En las carreras este carro fue conocido como Godzilla ya que en las carreras era de color azul, de 10 campeonatos este nissan gano 8 y por eso su apodo.
+
+Y pues esta es mi historia de porque me gustan tanto los carros y solo ago la invitación a las demas personas a que se metan a el mundo de los carros ya que es un mundo muy interesante y bonito.
+      </p>
+
     </div>
 
-    <!-- SUBIR IMAGENES -->
-    <div class="imagenes">
-      <input type="file" accept="image/*" onchange="mostrarImagen(event,0)">
-      <input type="file" accept="image/*" onchange="mostrarImagen(event,1)">
-      <input type="file" accept="image/*" onchange="mostrarImagen(event,2)">
-    </div>
+    <!-- IMAGENES FIJAS -->
+<div class="preview">
 
-    <!-- PREVIEW -->
-    <div class="preview">
-      <img id="img0">
-      <img id="img1">
-      <img id="img2">
-    </div>
+  <img src="eclipce.jpeg" alt="Mitsubishi Eclipse">
 
+  <img src="supra.jpeg" alt="Toyota Supra MK4">
+
+  <img src="skylane.jpeg" alt="Nissan Skyline GTR R34">
+
+</div>
     <!-- COMENTARIOS -->
     <div class="comentarios">
 
       <h2>💬 Comentarios</h2>
 
-      <textarea 
+      <textarea
       id="comentarioTexto"
       placeholder="Escribe un comentario..."></textarea>
 
@@ -231,35 +231,61 @@
 
   </div>
 
-  <script>
+  <!-- FIREBASE -->
 
-    // MOSTRAR IMAGENES
-    function mostrarImagen(event, index){
+  <script type="module">
 
-      const archivo = event.target.files[0];
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
-      if(archivo){
-
-        const lector = new FileReader();
-
-        lector.onload = function(e){
-
-          document.getElementById("img"+index).src =
-          e.target.result;
-
-        }
-
-        lector.readAsDataURL(archivo);
-      }
+    import {
+      getFirestore,
+      collection,
+      addDoc,
+      onSnapshot,
+      query,
+      orderBy,
+      serverTimestamp
     }
+    from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-    // AGREGAR COMENTARIOS
-    function agregarComentario(){
 
-      const texto =
-      document.getElementById("comentarioTexto").value;
+    // CONFIGURACION FIREBASE
+    // CAMBIA ESTOS DATOS POR LOS TUYOS
 
-      if(texto.trim() !== ""){
+    const firebaseConfig = {
+      apiKey: "TU_API_KEY",
+      authDomain: "TU_PROYECTO.firebaseapp.com",
+      projectId: "TU_PROJECT_ID",
+      storageBucket: "TU_PROYECTO.appspot.com",
+      messagingSenderId: "TU_ID",
+      appId: "TU_APP_ID"
+    };
+
+
+    // INICIAR FIREBASE
+
+    const app = initializeApp(firebaseConfig);
+
+    const db = getFirestore(app);
+
+
+    // MOSTRAR COMENTARIOS EN TIEMPO REAL
+
+    const listaComentarios =
+    document.getElementById("listaComentarios");
+
+    const q = query(
+      collection(db, "comentarios"),
+      orderBy("fecha", "desc")
+    );
+
+    onSnapshot(q, (snapshot) => {
+
+      listaComentarios.innerHTML = "";
+
+      snapshot.forEach((doc) => {
+
+        const datos = doc.data();
 
         const comentario =
         document.createElement("div");
@@ -267,16 +293,41 @@
         comentario.classList.add("comentario");
 
         comentario.innerHTML =
-        "👤 Usuario:<br><br>" + texto;
+        "👤 Usuario:<br><br>" + datos.texto;
 
-        document.getElementById("listaComentarios")
-        .appendChild(comentario);
+        listaComentarios.appendChild(comentario);
+
+      });
+
+    });
+
+
+    // AGREGAR COMENTARIO
+
+    window.agregarComentario = async function(){
+
+      const texto =
+      document.getElementById("comentarioTexto").value;
+
+      if(texto.trim() !== ""){
+
+        await addDoc(collection(db, "comentarios"), {
+
+          texto: texto,
+
+          fecha: serverTimestamp()
+
+        });
 
         document.getElementById("comentarioTexto").value = "";
+
       }
+
     }
 
   </script>
 
 </body>
 </html>
+```
+
